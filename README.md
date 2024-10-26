@@ -1,1 +1,1 @@
-# Enigma machine simulator written in python
+# Enigma machine simulator
