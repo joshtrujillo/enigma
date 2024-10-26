@@ -4,14 +4,20 @@ enigma machine simulator
 @author Josh Trujillo
 '''
 
-# encrypts a message with the given key
-def encrypt(plaintext, key):
-    pass
+from rotor import Rotor
+from reflector import Reflector
+from plugboard import Plugboard
 
-# decrypts a message with the given key
-def decrypt(ciphertext, key):
-    pass
+class EnigmaMachine:
+    def __init__(self, rotors, reflector, plugboard):
+        sefl.rotors = rotors
+        self.reflector = reflector
+        self.plugboard = plugboard
 
-# sets the plugboard
-def plugboard(plugs):
-    pass
+    def encrypt_letter(self, letter):
+        # encrypt a single letter
+        pass
+
+    def encrypt_message(self, message):
+        # encrypt a message letter by letter
+        pass
