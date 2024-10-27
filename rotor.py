@@ -25,13 +25,14 @@ class Rotor:
 
     def rotate(self):
         # rotate and handle the notch turnover
-        pass
+        self.position += 1 % 26
+        if self.wiring[self.position] == self.notch:
+            return True
 
     def forward_substitute(self, letter):
         # perform forward substitution
-        pass
+        return self.wiring[ord(letter) - 65]
 
     def backward_substitute(self, letter):
         # perform backward substitution
-        pass
-
+        return chr(self.wiring.index(letter) + 65)
