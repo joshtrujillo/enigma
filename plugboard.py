@@ -10,4 +10,7 @@ class Plugboard:
 
     def swap(self, letter):
         # swap letter based on plugboard wiring
-        pass
+        if letter in self.wiring:
+            return self.wiring(letter)
+        else:
+            return letter
