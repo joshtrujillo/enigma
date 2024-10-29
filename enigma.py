@@ -33,7 +33,7 @@ class EnigmaMachine:
         return result
 
     def set_rotor_positions(self, positions):
-        pass
+       pass
 
     def step_rotors(self):
         '''
