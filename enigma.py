@@ -29,12 +29,15 @@ class EnigmaMachine:
         # encrypt a message letter by letter
         result = ""
         for letter in message:
-            result += self.encrypt_letter(letter)
+            result += str(self.encrypt_letter(letter))
         return result
 
     def set_rotor_positions(self, positions):
         pass
 
     def step_rotors(self):
+        '''
+        steps the rotors and handles the step cascade
+        '''
 
         pass
