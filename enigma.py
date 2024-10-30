@@ -22,7 +22,8 @@ class EnigmaMachine:
             reflector: Reflector object
             plugboard: Plugboard object
         '''
-        self.rotors = [Rotor(rotor, position) for rotor, position in zip(rotors, initial_positions)]
+        self.rotors = [Rotor(rotor, position) \
+            for rotor, position in zip(rotors, initial_positions)]
         self.reflector = Reflector(reflector)
         self.plugboard = Plugboard(plugboard)
 
@@ -79,6 +80,17 @@ class EnigmaMachine:
 
 
 if __name__=="__main__":
+    valid_rotors = ["I", "II", "III"]
+    print("Enigma I emulator")
+    
+    rotors = []
+    rotors[0] = input("Please input rotor 1 (I, II, III): ")
+    rotors[1] = input("Please input rotor 2 (I, II, III): ")
+    rotors[2] = input("Please input rotor 3 (I, II, III): ")
+
+    positions = []
+
+    '''
     rotors = ["I", "II", "III"] 
     positions = [0, 0, 0]
     reflector = "B"
@@ -90,3 +102,5 @@ if __name__=="__main__":
         print(machine.encrypt_letter(letter))
         for i, rotor in enumerate(machine.rotors):
             print("%d rotor position : %d" % (i, rotor.position))
+
+    '''
