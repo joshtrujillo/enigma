@@ -47,14 +47,16 @@ def test_set_rotor_positions():
     assert machine.rotors[1].position == 3
     assert machine.rotors[2].position == 21
 
-
-def test_enigma_encrypt_letter():
+def test_enigma_encrypt_decrypt_letter():
     rotors = ["I", "II", "III"] 
     positions = [0, 0, 0]
     reflector = "A"
-    plugboard = [("A", "V")]
+    plugboard = []
     machine = EnigmaMachine(rotors, positions, reflector, plugboard)
-    pass
+    plain_letter = "A"
+    cipher_letter = machine.encrypt_letter(plain_letter)
+    machine.set_rotor_positions(positions)
+    assert machine.encrypt_letter(cipher_letter) == plain_letter
 
 def test_enigma_encrypt_decrypt():
     rotors = ["I", "II", "III"] 
