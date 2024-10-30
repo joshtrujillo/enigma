@@ -85,6 +85,6 @@ if __name__=="__main__":
     plugboard = [("A", "V")]
     machine = EnigmaMachine(rotors, positions, reflector, plugboard)
     
-    message = "HELLOWORLD"
+    message = "A" * 27
     print(machine.encrypt_message(message))
 
