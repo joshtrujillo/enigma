@@ -42,7 +42,7 @@ class EnigmaMachine:
         for rotor in self.rotors:
             letter = rotor.forward_substitute(letter)
         letter = self.reflector.reflect(letter)
-        for rotor in self.rotors:
+        for rotor in reversed(self.rotors):
             letter = rotor.backward_substitute(letter)
         return self.plugboard.swap(letter)
 
