@@ -12,6 +12,8 @@ def test_rotor_backward_sub():
     rotor = Rotor("I")
     assert rotor.backward_substitute("E") == "A"
     
+def test_rotor_step():
+    pass
 
 def test_plugboard():
     plugboard = Plugboard([("E", "A")])
