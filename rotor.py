@@ -7,10 +7,7 @@ Class for each rotor in the enigma machine
 class Rotor:
     def __init__(self, rotor, initial_position=0):
         '''
-        attributes:
-        wiring
-        notch
-        position
+
         '''
         self.position = initial_position
         if rotor == "I":
