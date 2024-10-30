@@ -13,16 +13,40 @@ def test_rotor_backward_sub():
     assert rotor.backward_substitute("E") == "A"
     
 def test_rotor_step():
-    pass
+    rotors = ["I", "II", "III"] 
+    positions = [0, 0, 0]
+    reflector = "A"
+    plugboard = [("A", "V")]
+    machine = EnigmaMachine(rotors, positions, reflector, plugboard)
+    message = "A" * 5
+    machine.encrypt_message(message)
+    assert machine.rotors[0].position == 5
+    machine.set_rotor_positions([0,0,0])
+    message = "A" * 27
+    machine.encrypt_message(message)
+    assert machine.rotors[1].position == 1
 
 def test_plugboard():
     plugboard = Plugboard([("E", "A")])
     assert plugboard.swap("E") == "A"
+    assert plugboard.swap("A") == "E"
     assert plugboard.swap("Z") == "Z"
 
 def test_reflector():
     reflector = Reflector("A")
     assert reflector.reflect("A") == "E"
+    
+def test_set_rotor_positions():
+    rotors = ["I", "II", "III"] 
+    positions = [0, 0, 0]
+    reflector = "A"
+    plugboard = []
+    machine = EnigmaMachine(rotors, positions, reflector, plugboard)
+    machine.set_rotor_positions([23,3,21])
+    assert machine.rotors[0].position == 23
+    assert machine.rotors[1].position == 3
+    assert machine.rotors[2].position == 21
+
 
 def test_enigma_encrypt_letter():
     rotors = ["I", "II", "III"] 
@@ -40,7 +64,6 @@ def test_enigma_encrypt_decrypt():
     machine = EnigmaMachine(rotors, positions, reflector, plugboard)
     
     message = "AAAAAAA"
-    breakpoint()
     ciphertext = machine.encrypt_message(message)
 
     machine.set_rotor_positions([0,0,0])
