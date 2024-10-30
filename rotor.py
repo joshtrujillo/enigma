@@ -7,7 +7,14 @@ Class for each rotor in the enigma machine
 class Rotor:
     def __init__(self, rotor, initial_position=0):
         '''
+        Args:
+            rotor: String for the rotor e.g. "I".
+            initial_position: Int for starting position, default is 0.
 
+        Atributes:
+            position: Int for the rotor position.
+            wiring: String for the rotor substitution.
+            notch: Char at the rotor notch.
         '''
         self.position = initial_position
         if rotor == "I":
@@ -28,20 +35,35 @@ class Rotor:
 
     def rotate(self):
         '''
-        rotate the rotor and return true if the
-        current position matches the rotor
+        Rotate the rotor and return true if the
+        current position matches the rotor.
+
+        Returns:
+            True if the new position is at the notch.
         '''
         self.position += 1 % 26
         return self.position == self.notch
 
     def forward_substitute(self, letter):
         '''
-        rotor substitution before reaching the reflector
+        Rotor substitution before reaching the reflector.
+
+        Args:
+            letter: The input letter.
+
+        Returns:
+            Output of the rotor.
         '''
-        return self.wiring[ord(letter) - 65]
+        return self.wiring[(ord(letter) - 65 + self.position) % 26]
 
     def backward_substitute(self, letter):
         '''
-        rotor substitution after passing the reflector
+        Rotor substitution after passing the reflector.
+
+        Args:
+            letter: The input letter.
+
+        Returns:
+            Output of the rotor going backwards.
         '''
         return chr(self.wiring.index(letter) + 65)
