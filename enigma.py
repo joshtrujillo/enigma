@@ -39,5 +39,6 @@ class EnigmaMachine:
         '''
         steps the rotors and handles the step cascade
         '''
-
-        pass
+        if self.rotors[0].rotate():
+            if self.rotors[1].rotate():
+                self.rotors[2].rotate()
