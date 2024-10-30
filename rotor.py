@@ -41,8 +41,8 @@ class Rotor:
         Returns:
             True if the new position is at the notch.
         '''
-        self.position += 1 % 26
-        return self.position == self.notch
+        self.position = (self.position + 1) % 26
+        return self.position == ord(self.notch) - 65
 
     def forward_substitute(self, letter):
         '''
@@ -66,4 +66,4 @@ class Rotor:
         Returns:
             Output of the rotor going backwards.
         '''
-        return chr(self.wiring.index(letter) + 65)
+        return chr((self.wiring.index(letter) - self.position + 26) % 26 + 65)
