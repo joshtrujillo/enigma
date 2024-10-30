@@ -81,10 +81,12 @@ class EnigmaMachine:
 if __name__=="__main__":
     rotors = ["I", "II", "III"] 
     positions = [0, 0, 0]
-    reflector = "A"
-    plugboard = [("A", "V")]
+    reflector = "B"
+    plugboard = []
     machine = EnigmaMachine(rotors, positions, reflector, plugboard)
     
     message = "A" * 27
-    print(machine.encrypt_message(message))
-
+    for letter in message:
+        print(machine.encrypt_letter(letter))
+        for i, rotor in enumerate(machine.rotors):
+            print("%d rotor position : %d" % (i, rotor.position))
