@@ -65,13 +65,12 @@ def test_enigma_encrypt_decrypt():
     plugboard = [("A", "V")]
     machine = EnigmaMachine(rotors, positions, reflector, plugboard)
     
-    message = "AAAAAAA"
+    message = "HEREISALONGERMESSAGETOTESTMYENIGMAMACHINESIMULATORWITHLETSSEEHOWITHANDLESTHISONE"
     ciphertext = machine.encrypt_message(message)
-
     machine.set_rotor_positions([0,0,0])
-
     plaintext = machine.encrypt_message(ciphertext)
-
     assert plaintext == message
+
+
 
 
