@@ -10,14 +10,32 @@ from plugboard import Plugboard
 
 class EnigmaMachine:
     def __init__(self, rotors, initial_positions, reflector, plugboard):
+        '''
+        Args:
+            rotors: A list of strings for rotors e.g. "I"
+            initial_posisions: A list of ints for rotor startings positions
+            reflector: String for the reflector.
+            plugboard: List of tuples of character pairs e.g. [("A", "V")]
+
+        Attributes: 
+            rotors: A list of rotor objects
+            reflector: Reflector object
+            plugboard: Plugboard object
+        '''
         self.rotors = [Rotor(rotor, position) for rotor, position in zip(rotors, initial_positions)]
         self.reflector = Reflector(reflector)
         self.plugboard = Plugboard(plugboard)
 
     def encrypt_letter(self, letter):
         '''
-        passes a letter to the plugboard, rotors, reflector,
-        back to rotors and the plugboard
+        Passes a letter to the plugboard, rotors, reflector,
+        back to rotors and the plugboard.
+
+        Args:
+            letter: The input letter.
+
+        Returns:
+            The output letter from the rotor.
         '''
         letter = self.plugboard.swap(letter)
         self.step_rotors()
@@ -30,7 +48,13 @@ class EnigmaMachine:
 
     def encrypt_message(self, message):
         '''
-        encrypts a message using encrypt_letter
+        Encrypts a message using encrypt_letter.
+
+        Args:
+            message: The message to encrypt
+
+        Returns:
+            The output message
         '''
         result = ""
         for letter in message:
@@ -38,13 +62,17 @@ class EnigmaMachine:
         return result
 
     def set_rotor_positions(self, positions):
+        '''
+        Sets the rotor positions.
+
+        Args:
+            positions: List of ints for rotor positions
+        '''
         for position, rotor in zip(positions, self.rotors):
             rotor.position = position
 
     def step_rotors(self):
-        '''
-        steps the rotors and handles the step cascade
-        '''
+        '''Steps the rotors and handles the step cascade.'''
         if self.rotors[0].rotate():
             if self.rotors[1].rotate():
                 self.rotors[2].rotate()
