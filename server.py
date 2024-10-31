@@ -7,7 +7,7 @@ Webserver for Enigma python project
 from flask import Flask, render_template, request, redirect, url_for
 from enigma_machine import EnigmaMachine, Rotor, Reflector, Plugboard
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static", template_folder="templates")
 
 
 # Homepage route
@@ -32,3 +32,8 @@ def encrypt():
     enigma = EnigmaMachine(rotors, positions, reflector, plugboard)
     ciphertext = enigma.encrypt_message(message)
     return render_template("result.html", result=ciphertext)
+
+
+@app.route("/test-css")
+def test_css():
+    return app.send_static_file("styles.css")
