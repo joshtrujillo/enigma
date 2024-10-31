@@ -27,9 +27,11 @@ def test_rotor_step():
     assert machine.rotors[1].position == 1
 
 def test_plugboard():
-    plugboard = Plugboard("EA")
+    plugboard = Plugboard("EA FN")
     assert plugboard.swap("E") == "A"
     assert plugboard.swap("A") == "E"
+    assert plugboard.swap("F") == "N"
+    assert plugboard.swap("N") == "F"
     assert plugboard.swap("Z") == "Z"
 
 def test_reflector():
