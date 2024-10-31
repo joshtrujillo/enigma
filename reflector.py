@@ -8,10 +8,10 @@ class Reflector:
     def __init__(self, reflector_type):
         '''
         Args:
-            reflector_type: String for the reflector type e.g. "A".
+            reflector_type (str): Reflector type e.g., "A" or "B".
 
         Attributes:
-            wiring: String reprsenting the reflector wiring.
+            wiring (str): Reflector wiring.
         '''
         if reflector_type == "A":
             self.wiring = "EJMZALYXVBWFCRQUONTSPIKHGD"
@@ -22,6 +22,9 @@ class Reflector:
 
     def reflect(self, letter):
         '''
-        Returns the shifted letter based on the reflector setting.
+        Pass letter through reflector wiring.
+
+        Returns:
+            str: Reflected letter.
         '''
         return self.wiring[ord(letter) - 65]
