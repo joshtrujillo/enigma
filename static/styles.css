@@ -40,7 +40,7 @@ fieldset {
     padding: 2rem 0;
 }
 
-h1, h2, h3, label, legend, p {
+h1, h2, h3, label, legend, p, a {
     text-align: center; 
 }
 
