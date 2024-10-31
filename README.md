@@ -1,4 +1,4 @@
-## Enigma machine simulator
+# Enigma machine simulator
 
 Requires Flask: `pip install flask`
 
