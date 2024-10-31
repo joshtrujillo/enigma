@@ -1,4 +1,9 @@
 body {
+    background-image: url("/static/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attackment: fixed;
+    color: beige;
     font-family: Arial, sans-serif;
     max-width: 600px;
     margin: 0 auto;
@@ -6,7 +11,6 @@ body {
 }
 
 h1 {
-    color: #333;
     font-size: 40px;
     margin-top: 0;
     margin-bottom: 15px;
@@ -15,18 +19,54 @@ h1 {
 input, button {
     padding: 10px;
     margin: 5px;
+    text-align: center;
 }
 
-h1, h2, p {
+button[type="submit"] {
+    display: block;
+    width: 60%;
+    margin: 1em auto;
+    height: 3em;
+    font-size: 1.1rem;
+    background-color: #3b3b4f;
+    border-color: #3b3b4f;
+    color: beige;
+    border-radius: 10px;
+    line-height: -1.5;
+}
+
+fieldset {
+    border: none;
+    padding: 2rem 0;
+}
+
+h1, h2, h3, label, legend, p {
     text-align: center; 
 }
 
-.menu {
-    width: 80%;
-    background-color: burlywood;
+input, textarea {
+    margin : 10px 0 0 0;
+}
+
+form {
+    width: 60vw;
+    max-width: 500px;
+    min-width: 300px;
+    margin: 0 auto;
+}
+
+.window {
+    width: 100%;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
     max-width: 500px;
 }
 
+#message {
+    width: 300px;
+    height: 40px;
+}

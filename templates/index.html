@@ -11,17 +11,18 @@
             <h1>Enigma Machine Simulator</h1>
             <form action="{{ url_for('encrypt') }}" method="post">
                 <label for="message">Message:</label>
-                <input type="text" id="message" name="message" required>
+                <br>
+                <textarea id="message" name="message" rows="5" cols="40" required></textarea>
 
                 <h3>Rotors</h3>
                 <input type="text" name="rotor1" placeholder="Rotor I, II, III, IV, or V" required>
-                <input type="number" name="position1" min="0" max="25" required>
+                <input type="number" name="position1" placeholder="Pos." min="0" max="25" required>
                 <br>
                 <input type="text" name="rotor2" placeholder="Rotor I, II, III, IV, or V" required>
-                <input type="number" name="position2" min="0" max="25" required>
+                <input type="number" name="position2" placeholder="Pos." min="0" max="25" required>
                 <br>
                 <input type="text" name="rotor3" placeholder="Rotor I, II, III, IV, or V" required>
-                <input type="number" name="position3" min="0" max="25" required>
+                <input type="number" name="position3" placeholder="Pos." min="0" max="25" required>
                 <h3>Reflector</h3>
                 <fieldset>
                     <legend>Reflector A, B, or C</legend>
@@ -32,7 +33,7 @@
 
                 <h3>Plugboard (optional)</h3>
                 <input type="text" name="plugboard" placeholder="Pairs like AR TG CV...">
-
+                <br>
                 <button type="submit">Encrypt/Decrypt</button>
             </form>
         </div>
