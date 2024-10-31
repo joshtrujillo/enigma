@@ -4,9 +4,9 @@ enigma machine simulator
 @author Josh Trujillo
 """
 
-from rotor import Rotor
-from reflector import Reflector
-from plugboard import Plugboard
+from .rotor import Rotor
+from .reflector import Reflector
+from .plugboard import Plugboard
 
 # Constants
 VALID_ROTORS = ["I", "II", "III"]
@@ -84,9 +84,11 @@ class EnigmaMachine:
             if self.rotors[1].rotate():
                 self.rotors[2].rotate()
 
+
 # End of EnigmaMachine class methods.
 
 # Functions to prompt the user for the machine state and message
+
 
 def get_rotor_input():
     rotors = []

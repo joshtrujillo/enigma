@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Enigma Machine Simulator</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>Enigma Machine Simulator</h1>
+        <form action="{{ url_for('encrypt') }}" method="post">
+            <label for="message">Message:</label>
+            <input type="text" id="message" name="message" required>
+
+            <h3>Rotors</h3>
+            <input type="text" name="rotor1" placeholder="Rotor I, II, III, IV, or V" required>
+            <input type="number" name="position1" min="0" max="25" required>
+            <br>
+            <input type="text" name="rotor2" placeholder="Rotor I, II, III, IV, or V" required>
+            <input type="number" name="position2" min="0" max="25" required>
+            <br>
+            <input type="text" name="rotor3" placeholder="Rotor I, II, III, IV, or V" required>
+            <input type="number" name="position3" min="0" max="25" required>
+            <h3>Reflector</h3>
+            <input type="text" name="reflector" placeholder="Reflector A or B" required>
+
+            <h3>Plugboard (optional)</h3>
+            <input type="text" name="plugboard" placeholder="Pairs like AR, TG ...">
+
+            <button type="submit">Encrypt</button>
+        </form>
+    </body>
+</html>
