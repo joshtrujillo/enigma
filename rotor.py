@@ -63,9 +63,9 @@ class Rotor:
         Rotor substitution after passing the reflector.
 
         Args:
-            letter: The input letter.
+            letter (str): The input letter.
 
         Returns:
-            Output of the rotor going backwards.
+            str: Output of the rotor going backwards.
         '''
         return chr((self.wiring.index(letter) - self.position + 26) % 26 + 65)
