@@ -7,14 +7,16 @@ Class for each rotor in the enigma machine
 class Rotor:
     def __init__(self, rotor, initial_position=0):
         '''
+        Initilize a specific rotor with a position.
+            
         Args:
-            rotor: String for the rotor e.g. "I".
-            initial_position: Int for starting position, default is 0.
+            rotor (str): Rotor representation e.g., "I".
+            initial_position (int): Int for starting position, default is 0.
 
         Atributes:
-            position: Int for the rotor position.
-            wiring: String for the rotor substitution.
-            notch: Char at the rotor notch.
+            position (int): Rotor position.
+            wiring (str): Rotor substitution wiring.
+            notch (str): Rotor notch.
         '''
         self.position = initial_position
         if rotor == "I":
@@ -39,7 +41,7 @@ class Rotor:
         current position matches the rotor.
 
         Returns:
-            True if the new position is at the notch.
+            bool: True if the new position is at the notch.
         '''
         self.position = (self.position + 1) % 26
         return self.position == ord(self.notch) - 65
@@ -49,10 +51,10 @@ class Rotor:
         Rotor substitution before reaching the reflector.
 
         Args:
-            letter: The input letter.
+            letter (str): The input letter.
 
         Returns:
-            Output of the rotor.
+            str: Output of the rotor.
         '''
         return self.wiring[(ord(letter) - 65 + self.position) % 26]
 
