@@ -1,8 +1,8 @@
-'''
+"""
 enigma.py
 enigma machine simulator
 @author Josh Trujillo
-'''
+"""
 
 from rotor import Rotor
 from reflector import Reflector
@@ -13,9 +13,10 @@ VALID_ROTORS = ["I", "II", "III"]
 VALID_REFLECTORS = ["A", "B"]
 ALPHABET_SIZE = 26
 
+
 class EnigmaMachine:
     def __init__(self, rotors, initial_positions, reflector, plugboard):
-        '''
+        """
         Initialize the EnigmaMachine with rotors, reflector, and plugboard
 
         Args:
@@ -24,18 +25,19 @@ class EnigmaMachine:
             reflector (str): Reflector type, e.g., "A" or "B".
             plugboard (str): Plugboard connections, e.g., "AB DF GE"
 
-        Attributes: 
+        Attributes:
             rotors (list[Rotor]): Initialized rotor objects.
             reflector (Reflector): Reflector object.
             plugboard (Plugboard): Plugboard object.
-        '''
-        self.rotors = [Rotor(rotor, position) \
-            for rotor, position in zip(rotors, initial_positions)]
+        """
+        self.rotors = [
+            Rotor(rotor, position) for rotor, position in zip(rotors, initial_positions)
+        ]
         self.reflector = Reflector(reflector)
         self.plugboard = Plugboard(plugboard)
 
     def encrypt_letter(self, letter):
-        '''
+        """
         Encrypts a single letter through the plugboard, rotors, reflector,
         back to rotors and the plugboard.
 
@@ -44,7 +46,7 @@ class EnigmaMachine:
 
         Returns:
             str: The output letter from the rotor.
-        '''
+        """
         letter = self.plugboard.swap(letter)
         self.step_rotors()
         for rotor in self.rotors:
@@ -55,7 +57,7 @@ class EnigmaMachine:
         return self.plugboard.swap(letter)
 
     def encrypt_message(self, message):
-        '''
+        """
         Encrypts a message using encrypt_letter.
 
         Args:
@@ -63,24 +65,28 @@ class EnigmaMachine:
 
         Returns:
             str: The output message.
-        '''
-        return ''.join(self.encrypt_letter(letter) for letter in message)
+        """
+        return "".join(self.encrypt_letter(letter) for letter in message)
 
     def set_rotor_positions(self, positions):
-        '''
+        """
         Sets the rotor positions to specified values.
 
         Args:
-            positions (list[int]): List of ints for rotor positions (0-25)
-        '''
+            positions (list[int]): List of ints for rotor positions (0-25).
+        """
         for position, rotor in zip(positions, self.rotors):
             rotor.position = position % ALPHABET_SIZE
 
     def step_rotors(self):
-        '''Steps the rotors and handles the step cascade.'''
+        """Steps the rotors and handles the step cascade."""
         if self.rotors[0].rotate():
             if self.rotors[1].rotate():
                 self.rotors[2].rotate()
+
+# End of EnigmaMachine class methods.
+
+# Functions to prompt the user for the machine state and message
 
 def get_rotor_input():
     rotors = []
@@ -93,6 +99,7 @@ def get_rotor_input():
             else:
                 print("Invalid rotor. Please enter I, II, or III.")
     return rotors
+
 
 def get_position_input():
     positions = []
@@ -109,6 +116,7 @@ def get_position_input():
                 print("Invalid input. Enter an integer.")
     return positions
 
+
 def get_reflector_input():
     while True:
         reflector = input("Input reflector (A, B): ")
@@ -116,23 +124,24 @@ def get_reflector_input():
             return reflector
         print("Invalid reflector. Please enter A or B.")
 
+
 def get_plugboard_input():
-    plug_pairs = input("Input plugboard pairs (e.g. AR TG ...): ").upper().split()
+    plug_pairs = input("Input plugboard pairs (e.g. AR TG ...): ")
     return plug_pairs
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     print("Enigma I simulator")
-    
+
     rotors = get_rotor_input()
     positions = get_position_input()
     reflector = get_reflector_input()
     plugboard = get_plugboard_input()
 
     machine = EnigmaMachine(rotors, positions, reflector, plugboard)
-    
+
     message = "".join(input("Enter your message: ").upper().split())
     ciphertext = machine.encrypt_message(message)
-    
+
     print("Ciphertext:")
     print(ciphertext)
