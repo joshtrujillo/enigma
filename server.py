@@ -5,7 +5,7 @@ Webserver for Enigma python project
 """
 
 from flask import Flask, render_template, request, redirect, url_for
-from enigma_machine import EnigmaMachine, Rotor, Reflector, Plugboard
+from enigma_machine import EnigmaMachine
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 
