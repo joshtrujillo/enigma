@@ -84,11 +84,26 @@ if __name__=="__main__":
     print("Enigma I emulator")
     
     rotors = []
-    rotors[0] = input("Please input rotor 1 (I, II, III): ")
-    rotors[1] = input("Please input rotor 2 (I, II, III): ")
-    rotors[2] = input("Please input rotor 3 (I, II, III): ")
+    rotors.append(input("Input rotor 1 (I, II, III): "))
+    rotors.append(input("Input rotor 2 (I, II, III): "))
+    rotors.append(input("Input rotor 3 (I, II, III): "))
 
     positions = []
+    positions.append(int(input("Input rotor position 1 (0-25): ")))
+    positions.append(int(input("Input rotor position 2 (0-25): ")))
+    positions.append(int(input("Input rotor position 3 (0-25): ")))
+
+    reflector = input("Input reflector (A, B): ")
+
+    plugboard = input("Input plug board as pairs separated by commas. ex. AR, TG, ...")
+
+    machine = EnigmaMachine(rotors, positions, reflector, plugboard)
+    
+    message = "".join(input("Enter your message: ").upper().split())
+    ciphertext = machine.encrypt_message(message)
+    
+    print("Ciphertext:")
+    print(ciphertext)
 
     '''
     rotors = ["I", "II", "III"] 
