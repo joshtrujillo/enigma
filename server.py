@@ -31,6 +31,7 @@ def encrypt():
 
     enigma = EnigmaMachine(rotors, positions, reflector, plugboard)
     ciphertext = enigma.encrypt_message(message)
+    enigma.set_rotor_positions(positions)
     return render_template("result.html", result=ciphertext)
 
 
