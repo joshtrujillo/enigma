@@ -2,6 +2,6 @@
 
 Requires Flask: `pip install flask`
 
-Run server.py: `flask --app server run`
+Run app.py: `flask run`
 
 Use `--debug` for debugging and autoupdate when files change.
