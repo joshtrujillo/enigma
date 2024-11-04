@@ -49,6 +49,26 @@ input, textarea {
     margin : 10px 0 0 0;
 }
 
+textarea {
+    background-color: #191724;
+    color: beige;
+    border: 1px solid #524f67;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    resize: vertical;
+    border-radius: 8px;
+}
+
+textarea::-webkit-scrollbar {
+    width: 0px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: #524f67;
+    border-radius: 4px;
+}
+
 form {
     width: 60vw;
     max-width: 500px;
